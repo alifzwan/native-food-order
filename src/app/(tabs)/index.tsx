@@ -29,7 +29,7 @@ export default function MenuScreen() {
                      from our array be rendered.
 
  * Other properties:
- -  numColumns -  split the container into columns
+ -  numColumns -  display our item in multiple columns
  -  contentContainerStyle - style that supplied to all container
                       
 */                     
