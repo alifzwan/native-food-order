@@ -4,7 +4,7 @@ import { Stack } from 'expo-router'
 const MenuStack = () => {
   return (
   <Stack>
-    <Stack.Screen name="menu" options={{title: "Menu"}}/>
+    <Stack.Screen name="index" options={{title: "Menu"}}/>
   </Stack>
   )
 }
