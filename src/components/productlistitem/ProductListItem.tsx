@@ -1,7 +1,8 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react'
 import { Product } from '@/types';
 import Colors from '@/constants/Colors';
+import { Link } from 'expo-router';
 
 export const defaultPizzaImage =
     'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png'
@@ -12,16 +13,17 @@ type ProductListItemProps = {
 
 const ProductListItem = ({ product } : ProductListItemProps) => {
   return (
-    <View style={styles.container}>
-        <Image 
-            source={{ uri: product.image || defaultPizzaImage }} 
-            style={styles.image}
-            resizeMode='contain'
-        />
-        <Text style={styles.title}>{product.name}</Text>
-        <Text style={styles.price}>${product.price}</Text>
-    </View>
-    
+    <Link href={`/product`} asChild>
+        <Pressable style={styles.container}>
+            <Image 
+                source={{ uri: product.image || defaultPizzaImage }} 
+                style={styles.image}
+                resizeMode='contain'
+            />
+            <Text style={styles.title}>{product.name}</Text>
+            <Text style={styles.price}>${product.price}</Text>
+        </Pressable>
+    </Link>
   )
 }
 
@@ -57,31 +59,38 @@ const styles = StyleSheet.create({
 
 
 
-// PROPS
-// - How we send the props from our parent components() 
-//   to our child component (ProductListItem)?
+/*  PROPS
+
+    - How we send the props from our parent components() 
+    to our child component (ProductListItem)?
 
 
-// Example (Javascript):
+    * Example (Javascript):
 
-// <ProductListItem props={item}/>
+    <ProductListItem props={item}/>
 
-// const ProductListItem = ({ props }) => {}
+    const ProductListItem = ({ props }) => {}
 
-// {props.map((item) => (
-// jsx
-// ))}
+    {props.map((item) => (
+    jsx
+    ))}
 
 
-// Example (TypeScript):
+    * Example (TypeScript):
 
-// <ProductListItem props={item}/>
+    <ProductListItem props={item}/>
 
-// const ProductListItem = ({ props }) => {}
+    const ProductListItem = ({ props }) => {}
 
-//   type Product = {
-//     id: number;
-//     image: string | null;
-//     name: string;
-//     price: number;
-//   };
+    type Product = {
+        id: number;
+        image: string | null;
+        name: string;
+        price: number;
+    };
+*/   
+
+
+/*
+    View === Pressable 
+*/
