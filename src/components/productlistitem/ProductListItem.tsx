@@ -7,6 +7,7 @@ import { Link } from 'expo-router';
 export const defaultPizzaImage =
     'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png'
 
+
 type ProductListItemProps = {
     product: Product
 }
@@ -59,28 +60,38 @@ const styles = StyleSheet.create({
 
 
 
-/*  PROPS
+/*  
+    * PROPS
 
     - How we send the props from our parent components() 
-    to our child component (ProductListItem)?
+      to our child component (ProductListItem)?
+
+    * Javascript - We simply receive the props as parameter
+    * Typescript - We have to define the types of the props
 
 
-    * Example (Javascript):
+    * (Javascript):
+
+    * We don't need to define the type of prop
+    * We simply receive it as parameter
+
 
     <ProductListItem props={item}/>
 
     const ProductListItem = ({ props }) => {}
 
-    {props.map((item) => (
-    jsx
-    ))}
 
 
-    * Example (TypeScript):
+    *(TypeScript):
 
-    <ProductListItem props={item}/>
+    * We need to define the data type of the props 
 
-    const ProductListItem = ({ props }) => {}
+
+    type ProductListItemProps = {
+      product: Product
+    }
+
+    * Static Type:
 
     type Product = {
         id: number;
@@ -88,9 +99,9 @@ const styles = StyleSheet.create({
         name: string;
         price: number;
     };
+
+    const ProductListItem = ({ props }) => {}
+    
 */   
 
 
-/*
-    View === Pressable 
-*/
