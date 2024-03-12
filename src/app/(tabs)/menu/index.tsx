@@ -17,19 +17,20 @@ export default function MenuScreen() {
   );
 }
 
-/* FLATLIST
+/* 
+*    FLATLIST
 
- - Flatlist helps us render an infinite scrollable lists
+*   - Flatlist helps us render an infinite scrollable lists
 
 
- * Properties required in Flatlist:
+*   Properties required in Flatlist:
 
- - data={n}       // n - array of item.
- - renderItem={}  // function that tells Flatlist how should single item
-                     from our array be rendered.
+*   - data={n}       => n is array of item.
+*   - renderItem={}  => function that tells Flatlist how should single item
+*                       from our array be rendered.
 
- * Other properties:
- -  numColumns -  display our item in multiple columns
- -  contentContainerStyle - style that supplied to all container
+ *  Other properties:
+ *  -  numColumns =>  display our item in multiple columns
+ *  -  contentContainerStyle => style that supplied to all container
                       
 */                     
