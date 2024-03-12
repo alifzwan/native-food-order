@@ -1,24 +1,37 @@
 
 import React, { useState } from 'react'
 import products from '@assets/data/products'
-import { Stack, useLocalSearchParams } from 'expo-router'
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import { defaultPizzaImage } from '@/components/productlistitem/ProductListItem'
 import Button from '@/components/Button'
+import { useCart } from '@/provider/CartProvider'
+import { PizzaSize } from '@/types'
 
-const sizes = ["S", "M", "L", "XL"]  // Array of Sizes
+const sizes: PizzaSize[] = ["S", "M", "L", "XL"]  // Array of Sizes
 
 const ProductDetailScreen = () => {
-  const [selectedSize, setSelectedSize] = useState("M")
+  const { id } = useLocalSearchParams(); // To read the path parameter inside the Product details screen 
+                                         
+  const [selectedSize, setSelectedSize] = useState<PizzaSize>("M")
+  const { addItem } = useCart()
+
+  const router = useRouter()
   
-  const { id } = useLocalSearchParams(); // To read the path parameter inside
-                                         // inside the Product detals screen using
+  
   const product = products.find(
     (item) => item.id.toString() == id
   )
 
   const addToCart = () => {
-    console.warn(`Adding to cart, size: ${selectedSize}`)
+    
+    if(!product){
+      return  
+    }
+    addItem(product, selectedSize)
+    console.warn("Item Added")
+    router.push("/cart")
+
   }
 
   
@@ -58,17 +71,16 @@ const ProductDetailScreen = () => {
           ))}
         </View>
         
-
-
-        
         <Text style={styles.price}>${product.price}</Text>
 
         <Button onPress={addToCart} text='Add to cart'/>
-
-
       </View>
     )
   }
+
+
+
+
 
   const styles = StyleSheet.create({
     container:{
