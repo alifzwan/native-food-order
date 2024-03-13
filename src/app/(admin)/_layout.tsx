@@ -5,7 +5,7 @@ import { Pressable } from 'react-native';
 
 import Colors from '../../constants/Colors';
 import { useColorScheme } from '../../components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { useClientOnlyValue } from '../../components/useClientOnlyValue';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -22,36 +22,35 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors.light.background,
-        tabBarInactiveTintColor: 'gainsboro',
-        tabBarStyle:{
+        tabBarInactiveTintColor:"gainsboro",
+        tabBarStyle: {
           backgroundColor: Colors.light.tint
-        },
-        headerShown: useClientOnlyValue(false, true),
+        }
       }}>
 
-      <Tabs.Screen name='index' options={{href: null}}/> 
+      <Tabs.Screen name='index' options={{ href: "null" }}/> 
 
 
 
-        <Tabs.Screen
-          name="menu"
-          options={{
-            title: 'Menu',
-            headerShown: false,
+      <Tabs.Screen
+        name="menu"
+        options={{
+          title: 'Menu',
+          headerShown: false,
 
-            tabBarIcon: ({ color }) => 
-              <TabBarIcon name="cutlery" color={color} /> ,
-          }}
-        />
+          tabBarIcon: ({ color }) => 
+            <TabBarIcon name="cutlery" color={color} /> ,
+        }}
+      />
 
 
-        <Tabs.Screen
-          name="two"
-          options={{
-            title: 'Orders',
-            tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
-          }}
-        />
+      <Tabs.Screen
+        name="two"
+        options={{
+          title: 'Orders',
+          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+        }}
+      />
     </Tabs>
   );
 }

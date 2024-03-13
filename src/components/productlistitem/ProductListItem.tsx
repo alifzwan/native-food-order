@@ -13,10 +13,11 @@ type ProductListItemProps = {
 }
 
 const ProductListItem = ({ product } : ProductListItemProps) => {
-  const segments = useSegments() // 
+  const segments = useSegments() //* It'll return a list of segment for the currently selected route
+  console.log(segments) //* ['(admin) ', 'menu']
   
   return (
-    <Link href={`${segments[0]}/menu/${product.id}`} asChild>
+    <Link href={`/${segments[0]}/menu/${product.id}`} asChild>
         <Pressable style={styles.container}>
             <Image 
                 source={{ uri: product.image || defaultPizzaImage }} 
