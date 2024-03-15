@@ -3,6 +3,8 @@ import React from 'react';
 import Button from '../components/Button';
 import { Link } from 'expo-router';
 
+// This file is like HOME - "/"
+
 const index = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', padding: 10 }}>
@@ -13,6 +15,10 @@ const index = () => {
 
       <Link href={'/(admin)/menu'} asChild>
         <Button text="Admin" />
+      </Link>
+
+      <Link href={'/sign-up'} asChild>
+        <Button text="Sign up" />
       </Link>
       
     </View>
