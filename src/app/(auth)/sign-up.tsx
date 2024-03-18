@@ -32,7 +32,7 @@ const SignUpScreen = () => {
             secureTextEntry
             onChangeText={setPassword}
         />
-        <Button text='Create Account'/>
+        <Button text='Create Account' />
         
         <Link href="/(auth)/sign-in" style={styles.textButton}>
             Sign In

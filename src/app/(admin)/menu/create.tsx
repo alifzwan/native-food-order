@@ -157,7 +157,8 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     label: {
-        color: 'gray'
+       
+        // color: 'gray'
     },
     input: {
         borderWidth: 1,

@@ -46,7 +46,6 @@ const ProductDetailScreen = () => {
       <View style={styles.container}> 
 
         <Stack.Screen 
-          // name="[id]" 
           options={{ title: "Menu", 
             headerRight: () => (
               <Link href={`/(admin)/menu/create?id=${id}`} asChild>
@@ -90,12 +89,14 @@ const ProductDetailScreen = () => {
       backgroundColor: "white",
       flex: 1,
       padding: 10,
+      alignItems:"center"
     },
     image:{
       width: "100%",
       aspectRatio: 1,
     },
     title: {
+      justifyContent:"center",
       fontSize: 20,
       fontWeight: "bold",
     },

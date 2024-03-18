@@ -34,7 +34,7 @@ const SignInScreen = () => {
         />
         <Button text='Sign In'/>
         
-        <Link href="/(auth)/sign-in" style={styles.textButton}>
+        <Link href="/(auth)/sign-up" style={styles.textButton}>
             Create an Account
         </Link>
         </View>

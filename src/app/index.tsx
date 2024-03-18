@@ -7,9 +7,9 @@ import { Link } from 'expo-router';
 
 const index = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', padding: 10 }}>
+    <View style={{ flex: 1, justifyContent: 'center', padding: 10}}>
 
-      <Link href={'/(user)/menu'} asChild>
+      <Link href={'/(user)/menu'} asChild >
         <Button text="User" />
       </Link>
 

@@ -25,7 +25,7 @@ const ProductListItem = ({ product } : ProductListItemProps) => {
                 resizeMode='contain'
             />
             <Text style={styles.title}>{product.name}</Text>
-            <Text style={styles.price}>${product.price}</Text>
+            <Text style={styles.price}>RM{product.price}</Text>
         </Pressable>
     </Link>
   )
@@ -40,18 +40,19 @@ const styles = StyleSheet.create({
     container: {
       backgroundColor:"white",
       padding: 10, // Space "inside" the container
-  //  margin: 10   // Space "outside" the container
+   // margin: 10,   // Space "outside" the container
       borderRadius: 20,
       flex: 1,      // It will share the space equally amongst the siblings
       maxWidth:"50%"
     },
     title: {
-      fontSize: 20,
+      fontSize: 14,
       fontWeight: 'bold',
       marginVertical: 10,
     },
     
     price: {
+      fontSize: 13,
       color: Colors.light.tint,
       fontWeight:"bold",
     },
