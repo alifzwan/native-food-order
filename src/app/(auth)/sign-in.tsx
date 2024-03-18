@@ -23,36 +23,37 @@ const SignInScreen = () => {
     
     return (
         <View style={styles.container}>
-        <Stack.Screen options={{ title: "Sign-In"}}/>
-        <Image 
-            source={require("assets/images/food.jpg")}
-            style={styles.image}
-            resizeMode='contain'
-        />
+            <Stack.Screen options={{ title: "Sign-In"}}/>
+            
+            <Image 
+                source={require("assets/images/food.jpg")}
+                style={styles.image}
+                resizeMode='contain'
+            />
 
-        <Text style={styles.label}>Email</Text>
-        <TextInput 
-            value={email}
-            placeholder='john@gmail.com'
-            style={styles.input}
-            onChangeText={setEmail}
-        />
+            <Text style={styles.label}>Email</Text>
+            <TextInput 
+                value={email}
+                placeholder='john@gmail.com'
+                style={styles.input}
+                onChangeText={setEmail}
+            />
 
-        <Text style={styles.label}>Password</Text>
-        <TextInput 
-            value={password}
-            style={styles.input}
-            secureTextEntry
-            onChangeText={setPassword}
-        />
-        <Button 
-            onPress={signInwithEmail}
-            disabled={loading}
-            text={loading ? 'Signing in...' : 'Sign in'}/>
-        
-        <Link href="/(auth)/sign-up" style={styles.textButton}>
-            Create an Account
-        </Link>
+            <Text style={styles.label}>Password</Text>
+            <TextInput 
+                value={password}
+                style={styles.input}
+                secureTextEntry
+                onChangeText={setPassword}
+            />
+            <Button 
+                onPress={signInwithEmail}
+                disabled={loading}
+                text={loading ? 'Signing in...' : 'Sign in'}/>
+            
+            <Link href="/(auth)/sign-up" style={styles.textButton}>
+                Create an Account
+            </Link>
         </View>
     )
 }
