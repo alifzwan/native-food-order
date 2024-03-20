@@ -13,8 +13,8 @@ const SignUpScreen = () => {
     const signUpwithEmail = async () => {
         setLoading(true)
         const { error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
+            email,
+            password,
         });
 
         if (error) Alert.alert(error.message)
@@ -49,7 +49,8 @@ const SignUpScreen = () => {
             <Button
                 onPress={signUpwithEmail}
                 disabled={loading}
-                text={loading ? 'Creating account...' : "Create account"} />
+                text={loading ? 'Creating account...' : "Create account"} 
+            />
             
             <Link href="/(auth)/sign-in" style={styles.textButton}>
                 Sign In
