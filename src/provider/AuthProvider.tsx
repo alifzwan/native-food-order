@@ -5,8 +5,15 @@ import { PropsWithChildren, createContext, useContext, useEffect, useState } fro
 // This file is to Fetching the session information 
 // Utilize React Context Provider and share it globally
 
+/* Chronology:
+
+    - After user Sign up, Superbase will gives him a session
+    - Session with some tokens that wuthenticate and authorize 
+      him to make the next request/access to the database
+*/
+
 type AuthData = {
-    session : Session | null
+    session: Session | null
     loading: boolean
 }
 
@@ -22,7 +29,7 @@ const AuthProvider = ({children}: PropsWithChildren) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchSession = async() => {
+        const fetchSession = async () => {
             const { data } = await supabase.auth.getSession()
             setSession(data.session)
             setLoading(false)
