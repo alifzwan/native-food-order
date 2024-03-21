@@ -11,6 +11,10 @@ const index = () => {
 
   const { session, loading, isAdmin } = useAuth()
 
+  console.log("Session: ", session)
+  console.log("Loading: ", loading)
+  console.log("isAdmin:", isAdmin)
+
   if (loading) {
     return <ActivityIndicator />
   }

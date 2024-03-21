@@ -13,8 +13,8 @@ const SignInScreen = () => {
     const signInwithEmail = async () => {
         setLoading(true)
         const { error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
+            email,
+            password,
         })
 
         if (error) Alert.alert(error.message)

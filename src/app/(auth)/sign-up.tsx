@@ -14,8 +14,8 @@ const SignUpScreen = () => {
         setLoading(true)
         
         const { error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
+            email,
+            password,
         });
 
         if (error) Alert.alert(error.message)
@@ -44,6 +44,7 @@ const SignUpScreen = () => {
             <TextInput 
                 value={password}
                 style={styles.input}
+                placeholder=''
                 secureTextEntry
                 onChangeText={setPassword}
             />
