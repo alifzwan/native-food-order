@@ -1,10 +1,19 @@
 import React from 'react'
-import { Stack } from 'expo-router'
+import { Redirect, Stack } from 'expo-router'
+import { useAuth } from '@/provider/AuthProvider'
 
-const TabIndex = () => {
+
+
+const AuthLayout = () => {
+
+  const {session} = useAuth()
+
+  if(session){ // Basically if it's sign in
+    return <Redirect href={"/"} />
+  }
 
   return <Stack />
 
 }
 
-export default TabIndex
+export default AuthLayout
