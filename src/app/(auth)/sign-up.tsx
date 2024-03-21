@@ -52,7 +52,7 @@ const SignUpScreen = () => {
                 text={loading ? 'Creating account...' : "Create account"} 
             />
             
-            <Link href="/(auth)/sign-in" style={styles.textButton}>
+            <Link href="/sign-in" style={styles.textButton}>
                 Sign In
             </Link>
         </View>
