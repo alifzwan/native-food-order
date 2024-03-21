@@ -8,7 +8,7 @@ const AuthLayout = () => {
 
   const {session} = useAuth()
 
-  if(session){ // Basically if it's sign in
+  if (session){ // Basically if it's sign in
     return <Redirect href={"/"} />
   }
 
