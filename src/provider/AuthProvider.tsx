@@ -30,12 +30,18 @@ const AuthProvider = ({children}: PropsWithChildren) => {
 
     useEffect(() => {
         const fetchSession = async () => {
-            const { data } = await supabase.auth.getSession()
+            const { data } = await supabase.auth.getSession() // Retrieve the session, refresh it if necessary
             setSession(data.session)
+
+
+
+
+
+            
             setLoading(false)
         }
         fetchSession()
-        supabase.auth.onAuthStateChange((_event, session) => {
+        supabase.auth.onAuthStateChange((_event, session) => { // Receieve a notification everytime an auth event happen
             setSession(session);
         });
     },[])
