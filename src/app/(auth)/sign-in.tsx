@@ -26,7 +26,7 @@ const SignInScreen = () => {
             <Stack.Screen options={{ title: "Sign-In"}}/>
             
             <Image 
-                source={require("assets/images/food.jpg")}
+                source={require("assets/images/upm.png")}
                 style={styles.image}
                 resizeMode='contain'
             />
