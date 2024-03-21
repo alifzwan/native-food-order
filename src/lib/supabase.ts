@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
-import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppState } from 'react-native';
 
 const ExpoAsyncStorageAdapter = {
   getItem: (key: string) => {
@@ -15,14 +15,22 @@ const ExpoAsyncStorageAdapter = {
   },
 };
 
-const supabaseUrl = 'https://gpqnncjzlfxfihaqpdry.supabase.co';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || " "
+const supabaseUrl = "https://gpqnncjzlfxfihaqpdry.supabase.co"
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwcW5uY2p6bGZ4ZmloYXFwZHJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA3MzE2OTksImV4cCI6MjAyNjMwNzY5OX0.vYbNQoYqU1sP9uzeH5Hk255CWqgX6b9J7l5M9tc3Ya8"
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
-    storage: ExpoAsyncStorageAdapter ,
+    storage: ExpoAsyncStorageAdapter as any,
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: false,
   },
 });
+
+// AppState.addEventListener('change', (state) => {
+//   if (state === 'active') {
+//     supabase.auth.startAutoRefresh()
+//   } else {
+//     supabase.auth.stopAutoRefresh()
+//   }
+// })
