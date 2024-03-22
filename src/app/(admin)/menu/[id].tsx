@@ -11,41 +11,24 @@ import { FontAwesome } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { useProduct } from '@/api/products'
 
-const sizes: PizzaSize[] = ["S", "M", "L", "XL"]  // Array of Sizes
-
 const ProductDetailScreen = () => {
-  const router = useRouter()
-
-  const [selectedSize, setSelectedSize] = useState<PizzaSize>("M")
-  const { addItem } = useCart()
-
 
   const { id: idString } = useLocalSearchParams(); // To read the path parameter inside the Product details screen 
   const id = parseFloat(typeof idString === 'string' ? idString : idString[0])                 
   const {data: products, error, isLoading} = useProduct(id)
 
 
-  const addToCart = () => {
-    
-    if (!products) {
-      return  
-    }
-    addItem(products, selectedSize)
-    router.push("/cart")
-  }
-
   if (isLoading) {
     return <ActivityIndicator />
   }
-  if (error) { //if the product not found
-    return <Text>Failed to fetch the products</Text>
 
+  if (error || !products) { //if the product not found
+    return <Text>Failed to fetch the products</Text>
   }
   
 
   return (
       <View style={styles.container}> 
-
         <Stack.Screen 
           options={{ title: "Menu", 
             headerRight: () => (
@@ -100,6 +83,7 @@ const ProductDetailScreen = () => {
       justifyContent:"center",
       fontSize: 20,
       fontWeight: "bold",
+      marginTop: 20
     },
     price:{
       fontSize: 18,

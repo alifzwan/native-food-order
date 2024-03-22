@@ -35,7 +35,7 @@ const ProductDetailScreen = () => {
     return <ActivityIndicator />
   }
 
-  if (error){
+  if (error || !products){
     return <Text>Failed to fetch the products</Text>
   }
 
