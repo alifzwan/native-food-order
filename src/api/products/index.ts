@@ -32,13 +32,13 @@ export const useProductList = () => {
 */
 export const useProduct = ( id: number ) => {
     return useQuery({
-        queryKey:['products'],
+        queryKey:['products', id],
         queryFn: async () => {
             const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .eq('id', id)
-            .single()
+            .from('products') // Table Name 
+            .select('*')      // Select column
+            .eq('id', id)     // filter the column
+            .single()         
 
         //If there's an error
         if (error) {
