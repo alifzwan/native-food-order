@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import orders from '../../../../assets/data/orders';
-import OrderItemListItem from '../../../components/OrderItemListItem';
-import OrderListItem from '../../../components/OrderListItem';
 import { OrderStatusList } from '@/types';
 import Colors from '@/constants/Colors';
+import OrderItemListItem from '@/components/mainComponents/OrderItemListItem';
+import OrderListItem from '@/components/mainComponents/OrderListItem';
+import orders from '@assets/data/orders';
 
 const OrderDetailScreen = () => {
   const { id } = useLocalSearchParams();

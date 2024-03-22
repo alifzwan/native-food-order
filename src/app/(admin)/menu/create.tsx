@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, Image, TextInput, Button, Alert } from 'react-native'
 import React, { useState } from 'react'
-import { defaultPizzaImage } from '@/components/productlistitem/ProductListItem'
 import * as ImagePicker from 'expo-image-picker';
 import Colors from '@/constants/Colors'
 import { Stack, useLocalSearchParams } from 'expo-router';
+import { defaultPizzaImage } from '@/components/mainComponents/ProductListItem';
 
 const CreateProductScreen = () => {
 

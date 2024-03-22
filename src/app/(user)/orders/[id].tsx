@@ -2,8 +2,9 @@ import { View, Text, FlatList } from 'react-native'
 import React from 'react'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import orders from '@assets/data/orders'
-import OrderListItem from '@/components/OrderListItem'
-import OrderItemListItem from '@/components/OrderItemListItem'
+import OrderListItem from '@/components/mainComponents/OrderListItem'
+import OrderItemListItem from '@/components/mainComponents/OrderItemListItem'
+
 
 const OrderDetailScreen = () => {
     const { id }= useLocalSearchParams()
@@ -19,10 +20,10 @@ const OrderDetailScreen = () => {
 
     return (
         <View>
-            <Stack.Screen options={{ title: `Order #${ order.id }`}}/>
+            <Stack.Screen options={{ title: `Order #${ order?.id }`}}/>
             <OrderListItem order={order}/>
             <FlatList 
-                data={order.order_items}
+                data={order?.order_items}
                 renderItem={({ item }) => <OrderItemListItem item={item}/>}
             />
         </View>

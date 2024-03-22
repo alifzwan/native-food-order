@@ -1,6 +1,6 @@
-import { View, FlatList, ActivityIndicator, Text} from 'react-native';
-import ProductListItem from '@/components/productlistitem/ProductListItem';
+import { FlatList, ActivityIndicator, Text} from 'react-native';
 import { useProductList } from '@/api/products';
+import ProductListItem from '@/components/mainComponents/ProductListItem';
 
 
 export default function MenuScreen() {

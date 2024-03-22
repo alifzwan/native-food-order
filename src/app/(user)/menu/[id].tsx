@@ -1,13 +1,12 @@
 
 import React, { useState } from 'react'
-// import products from '@assets/data/products'
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { View, Text, StyleSheet, Image, Pressable, ActivityIndicator } from 'react-native'
-import { defaultPizzaImage } from '@/components/productlistitem/ProductListItem'
-import Button from '@/components/Button'
 import { useCart } from '@/provider/CartProvider'
 import { PizzaSize } from '@/types'
 import { useProduct } from '@/api/products'
+import Button from '@/components/mainComponents/Button'
+import { defaultPizzaImage } from '@/components/mainComponents/ProductListItem'
 
 const sizes: PizzaSize[] = ['S', 'M', 'L', 'XL']  // Array of Sizes
 

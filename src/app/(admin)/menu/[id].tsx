@@ -1,15 +1,11 @@
 
-import React, { useState } from 'react'
-import products from '@assets/data/products'
-import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
+import React from 'react'
+import { Link, Stack, useLocalSearchParams} from 'expo-router'
 import { View, Text, StyleSheet, Image, Pressable, ActivityIndicator } from 'react-native'
-import { defaultPizzaImage } from '@/components/productlistitem/ProductListItem'
-import Button from '@/components/Button'
-import { useCart } from '@/provider/CartProvider'
-import { PizzaSize } from '@/types'
 import { FontAwesome } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { useProduct } from '@/api/products'
+import { defaultPizzaImage } from '@/components/mainComponents/ProductListItem'
 
 const ProductDetailScreen = () => {
 

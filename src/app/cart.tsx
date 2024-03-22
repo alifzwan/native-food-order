@@ -3,8 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useCart } from '@/provider/CartProvider';
 
 import React from 'react'
-import CartListItem from '@/components/CartListItem';
-import Button from '@/components/Button';
+import Button from '@/components/mainComponents/Button';
+import CartListItem from '@/components/mainComponents/CartListItem';
 
 const CartScreen = () => {
 

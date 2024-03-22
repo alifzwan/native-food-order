@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, Image, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { Link, Stack } from 'expo-router'
-import Button from '@/components/Button'
 import Colors from '@/constants/Colors'
 import { supabase } from '@/lib/supabase'
+import Button from '@/components/mainComponents/Button'
 
 const SignUpScreen = () => {
     const [email, setEmail] = useState('')
