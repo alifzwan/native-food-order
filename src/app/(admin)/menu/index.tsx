@@ -6,17 +6,16 @@ import { supabase } from '@/lib/supabase';
 
 
 export default function MenuScreen() {
-  useEffect(() => {
-
-    const fetchProducts = async () =>  {
-      const { data, error } = await supabase
-      .from('products') // Table name
-      .select('*')      // Select column
-    }
+  // useEffect(() => {
+  //   const fetchProducts = async () =>  {
+  //     const { data, error } = await supabase
+  //     .from('products') // Table name
+  //     .select('*')      // Select column
+  //   }
     
-    fetchProducts()
+  //   fetchProducts()
    
-  },[])
+  // },[])
 
   return (
       <FlatList 
