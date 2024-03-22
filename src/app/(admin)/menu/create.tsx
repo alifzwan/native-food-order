@@ -2,8 +2,9 @@ import { View, Text, StyleSheet, Image, TextInput, Button, Alert } from 'react-n
 import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker';
 import Colors from '@/constants/Colors'
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, router, useLocalSearchParams } from 'expo-router';
 import { defaultPizzaImage } from '@/components/mainComponents/ProductListItem';
+import { useInsertProduct } from '@/api/products';
 
 const CreateProductScreen = () => {
 
@@ -13,8 +14,18 @@ const CreateProductScreen = () => {
     const [image, setImage] = useState<string | null>(null)
 
 
-    const { id } = useLocalSearchParams() //Getting the id of the product
+    const { id } = useLocalSearchParams() // Getting the id of the product
     const isUpdating = !!id; // Updating === true if id is defined
+
+    const { mutate: insertProduct } = useInsertProduct()
+
+
+
+    const resetFields = () => {
+        setName('')
+        setPrice('')
+    }
+
 
 
     const validateInput = () => {
@@ -34,21 +45,20 @@ const CreateProductScreen = () => {
         return true
     }
 
-    const onSubmit = () => {
-        if(isUpdating){
-            onUpdateCreate()
-        } else {
-            onCreate()
-        }
-    }
-
     const onCreate = () => {
         if(!validateInput()){
             return
         }
-        console.warn("Creating product: ", name)
-        setName("")
-        setPrice("")
+        console.warn('Creating product:', name)
+        insertProduct(
+            { name, price: parseFloat(price), image },
+            {
+                onSuccess: () => { // This function will be called if the mutation is executed successfully
+                    resetFields()
+                    router.back()
+                }
+            }
+        )
     }
 
 
@@ -59,6 +69,14 @@ const CreateProductScreen = () => {
         console.warn("Updating product: ")
         setName("")
         setPrice("")
+    }
+
+    const onSubmit = () => {
+        if(isUpdating){
+            onUpdateCreate()
+        } else {
+            onCreate()
+        }
     }
 
     const pickImage = async () => {
@@ -74,6 +92,7 @@ const CreateProductScreen = () => {
           setImage(result.assets[0].uri);
         }
     }
+    
 
     const onDelete = () => {
         console.warn("Deleting...");
@@ -81,7 +100,7 @@ const CreateProductScreen = () => {
     }
 
     const confirmDelete = () => {
-        Alert.alert("Confirm", "Are you sure uou want to delete thsi product", [
+        Alert.alert("Confirm", "Are you sure you want to delete thsi product", [
             {
                 text: 'Cancel'
             },
@@ -113,7 +132,7 @@ const CreateProductScreen = () => {
                 onChangeText={setName}
             />
 
-            <Text style={styles.label}>Price ($)</Text>
+            <Text style={styles.label}>Price (RM)</Text>
             <TextInput 
                 value={price}
                 placeholder='9.99'
