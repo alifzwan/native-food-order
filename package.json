@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo/ngrok": "^4.1.0",
-    "@expo/vector-icons": "^14.0.0",
+    "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-navigation/material-top-tabs": "^6.6.12",
     "@react-navigation/native": "^6.0.2",
