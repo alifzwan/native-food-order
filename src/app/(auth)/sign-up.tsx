@@ -4,10 +4,12 @@ import { Link, Stack } from 'expo-router'
 import Colors from '@/constants/Colors'
 import { supabase } from '@/lib/supabase'
 import Button from '@/components/mainComponents/Button'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const SignUpScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const signUpwithEmail = async () => {
@@ -22,9 +24,13 @@ const SignUpScreen = () => {
         setLoading(false)
     }
 
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword)
+    }
+
     return (
         <View style={styles.container}>
-            <Stack.Screen options={{ title: "Sign-Up"}}/>
+            <Stack.Screen options={{ title: "Sign-Up", headerShown: false}}/>
             
             <Image 
                 source={require("assets/images/upm.png")}
@@ -41,13 +47,22 @@ const SignUpScreen = () => {
             />
 
             <Text style={styles.label}>Password</Text>
-            <TextInput 
-                value={password}
-                style={styles.input}
-                placeholder=''
-                secureTextEntry
-                onChangeText={setPassword}
-            />
+            <View style={styles.password}>
+                <TextInput 
+                    value={password}
+                    style={styles.input}
+                    placeholder='Password:'
+                    secureTextEntry={!showPassword}
+                    onChangeText={setPassword}
+                />
+                <MaterialCommunityIcons
+                    name= {showPassword ? 'eye-off' : 'eye'}
+                    size={24}
+                    color= '#aaa'
+                    style={styles.icon}
+                    onPress={toggleShowPassword}
+                />
+            </View>
             <Button
                 onPress={signUpwithEmail}
                 disabled={loading}
@@ -64,23 +79,24 @@ const SignUpScreen = () => {
 export default SignUpScreen
 
 const styles = StyleSheet.create({
-    container:{
-        padding: 10
+    container: {
+        padding: 55
     },
-    image:{
+
+    image: {
         width: "50%",
         alignSelf:"center",
         padding: 10
     },
     label: {
-        // color: "gray"
+        fontWeight: 'bold',
     },
-    input:{
+    input: {
         color: "gray",
         backgroundColor: "white",
         padding: 20,
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 10,
         marginTop: 10,
         marginBottom: 20
     },
@@ -88,5 +104,24 @@ const styles = StyleSheet.create({
         color: Colors.light.tint,
         alignSelf: "center",
         fontWeight: "bold"
+    },
+    password: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    inputPassword: {
+        flex: 1,
+        color: 'gray',
+        backgroundColor: 'white',
+        padding: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        marginTop: 10,
+        marginBottom: 20,
+        
+    },
+    icon : {
+        marginLeft: 10
     }
 })
